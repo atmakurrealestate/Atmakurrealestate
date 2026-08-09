@@ -1,0 +1,801 @@
+/* =========================================================
+   1. RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================================================
+   2. BODY
+========================================================= */
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#050505;
+
+    color:#fff;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/* =========================================================
+   3. NAVBAR
+========================================================= */
+
+.navbar{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+}
+
+.navbar h2{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+/* =========================================================
+   4. PROPERTY GRID (DESKTOP)
+========================================================= */
+
+.property-grid{
+
+    width:100%;
+
+    max-width:1150px;
+
+    margin:30px auto;
+
+    padding:0 20px 30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:28px;
+
+}
+
+/* =========================================================
+   5. PROPERTY CARD (DESKTOP)
+========================================================= */
+
+.card{
+
+    background:#111;
+
+    border:1px solid rgba(255,215,0,.15);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.3s ease;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#FFD700;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.55),
+        0 0 18px rgba(255,215,0,.18);
+
+}
+
+.card-image{
+
+    position:relative;
+
+    width:100%;
+
+    height:240px;
+
+    overflow:hidden;
+
+}
+
+.card-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.4s;
+
+}
+
+.card:hover .card-image img{
+
+    transform:scale(1.05);
+
+}
+
+.card-content{
+
+    padding:18px;
+
+}
+
+.card-content h3{
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
+}
+
+.card-content p{
+
+    font-size:16px;
+
+    margin-bottom:10px;
+
+    line-height:1.6;
+
+}
+
+.price{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#FFD700;
+
+    margin:15px 0;
+
+}
+
+/* =========================================================
+   6. CARD BUTTONS (DESKTOP)
+========================================================= */
+
+.card-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:18px;
+
+}
+
+.details-btn,
+.whatsapp-btn{
+
+    flex:1;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    padding:12px 16px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s ease;
+
+}
+
+.details-btn{
+
+    background:#FFD700;
+
+    color:#111;
+
+}
+
+.details-btn:hover{
+
+    background:#e6c200;
+
+}
+
+.whatsapp-btn{
+
+    background:#25D366;
+
+    color:#fff;
+
+}
+
+.whatsapp-btn:hover{
+
+    background:#1ebe5d;
+
+}
+
+/* Property Status Badge */
+
+.badge{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.badge.available{
+
+    background:#22c55e;
+
+}
+
+.badge.sold{
+
+    background:#ef4444;
+
+}
+
+.badge.reserved{
+
+    background:#f59e0b;
+
+}
+
+
+/* =========================================================
+   7. EMPTY FAVORITES (DESKTOP)
+========================================================= */
+
+.empty-state{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:calc(100vh - 180px);
+
+}
+
+.empty-favorites{
+
+    width:100%;
+
+    max-width:450px;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    background:#111;
+
+    border:1px solid rgba(255,215,0,.15);
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.empty-icon{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+}
+
+.empty-favorites h2{
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+    color:#fff;
+
+}
+
+.empty-favorites p{
+
+    font-size:16px;
+
+    color:#bbb;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+.empty-favorites .details-btn{
+
+    display:inline-block;
+
+    min-width:200px;
+
+}
+
+/* =========================================================
+   9. PAGINATION (DESKTOP)
+========================================================= */
+
+.pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin:40px 0 30px;
+
+}
+
+.pagination button{
+
+    min-width:44px;
+
+    height:44px;
+
+    padding:0 16px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.pagination button:hover{
+
+    background:#FFD700;
+
+    color:#111;
+
+}
+
+.pagination button.active{
+
+    background:#FFD700;
+
+    color:#111;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   8. MOBILE RESPONSIVE (768px and Below)
+========================================================= */
+
+@media (max-width:768px){
+
+/* =========================================================
+   8.1 NAVBAR (MOBILE)
+========================================================= */
+
+.navbar{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:16px;
+
+    background:#050505;
+
+    z-index:999;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+}
+
+body{
+
+    padding-bottom:60px;
+
+   padding-top:40px;
+
+}
+
+/* =========================================================
+   8.2 PROPERTY GRID (MOBILE)
+========================================================= */
+
+.property-grid{
+
+    width:100%;
+    max-width:100%;
+    margin:14px auto 27px;
+    padding:0 7px 27px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:9px;
+
+}
+
+/* =========================================================
+   8.3 PROPERTY CARD (MOBILE)
+========================================================= */
+
+.card{
+
+    position:relative;
+
+    width:100%;
+    max-width:100%;
+
+    margin:0;
+
+    min-height:320px;
+
+    border-radius:11px;
+
+    overflow:hidden;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:1px solid rgba(212,175,55,.22);
+
+    border-radius:11px;
+
+    box-sizing:border-box;
+
+    pointer-events:none;
+
+}
+
+/* =========================================================
+   8.4 PROPERTY IMAGE (MOBILE)
+========================================================= */
+
+.card-image{
+
+    position:relative;
+
+    height:108px;
+
+    border-radius:11px 11px 0 0;
+
+}
+
+.card-image img{
+
+    width:100%;
+
+    height:108px;
+
+    object-fit:cover;
+
+    border-radius:11px 11px 0 0;
+
+}
+
+.card-image::after{
+
+    height:32px;
+
+}
+
+/* =========================================================
+   8.5 PROPERTY BADGE (MOBILE)
+========================================================= */
+
+.badge{
+
+    position:absolute;
+
+    top:7px;
+
+    right:7px;
+
+    padding:5px 11px;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    border-radius:18px;
+
+    letter-spacing:.4px;
+
+    color:#fff;
+
+    z-index:3;
+
+}
+
+.badge.available{
+
+    background:linear-gradient(135deg,#28a745,#34d058);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 4px 9px rgba(40,167,69,.35),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+}
+
+.badge.sold{
+
+    background:linear-gradient(135deg,#ff1744,#ff4569);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 4px 9px rgba(255,23,68,.35),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+}
+
+.badge.reserved{
+
+    background:linear-gradient(135deg,#f59e0b,#ffbf47);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        0 4px 9px rgba(245,158,11,.35),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+}
+
+/* =========================================================
+   8.6 PROPERTY CONTENT (MOBILE)
+========================================================= */
+
+.card-content{
+
+    padding:9px;
+
+}
+
+.card-content h3{
+
+    font-size:14px;
+
+    margin-bottom:7px;
+
+}
+
+.card-content p{
+
+    font-size:11px;
+
+    margin-bottom:5px;
+
+    line-height:1.4;
+
+}
+
+.price{
+
+    font-size:14px;
+
+    font-weight:800;
+
+    margin:8px 0;
+
+}
+
+/* =========================================================
+   8.7 PROPERTY BUTTONS (MOBILE)
+========================================================= */
+
+.card-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+.details-btn,
+.whatsapp-btn{
+
+    width:100%;
+
+    height:31px;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    border-radius:7px;
+
+}
+
+/* =========================================================
+   EMPTY FAVORITES CENTER
+========================================================= */
+
+.empty-state{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    min-height:calc(100vh - 180px);
+
+    padding:20px;
+
+}
+
+.empty-favorites{
+
+    width:100%;
+
+    max-width:360px;
+
+    margin:0 auto;
+
+}
+
+.empty-icon{
+
+    font-size:60px;
+
+}
+
+.empty-favorites h2{
+
+    font-size:24px;
+
+}
+
+.empty-favorites p{
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+.empty-favorites .details-btn{
+
+    display:block;
+
+    width:100%;
+
+}
+
+
+
+   /* =========================================================
+   9. PAGINATION (MOBILE)
+========================================================= */
+
+.pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin:25px 0 20px;
+
+}
+
+.pagination button{
+
+    min-width:36px;
+
+    height:36px;
+
+    padding:0 10px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.pagination button.active{
+
+    background:#FFD700;
+
+    color:#111;
+
+    font-weight:700;
+
+}
+
+}
+
+   
