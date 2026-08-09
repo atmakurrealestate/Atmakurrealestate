@@ -1,0 +1,313 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  <meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Atmakur Real Estate</title>  <meta property="og:image" content="images/hero.jpg">  <link rel="stylesheet" href="style.css">  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <link rel="stylesheet"  
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  </head>  <body>  <header class="navbar">  <nav class="glass-navbar">  
+
+    <a href="#" class="nav-item active">  
+        <i class="fa-solid fa-house"></i>  
+        <span>Home</span>  
+    </a>  
+
+    <a href="#properties" class="nav-item">  
+        <i class="fa-solid fa-building"></i>  
+        <span>Properties</span>  
+    </a>  
+
+    <a href="#about" class="nav-item">  
+        <i class="fa-solid fa-user"></i>  
+        <span>About</span>  
+    </a>  
+
+    <a href="tel:+918977201211" class="nav-item">  
+        <i class="fa-solid fa-phone"></i>  
+        <span>Call</span>  
+    </a>  
+       <a href="favorites.html" class="nav-item">
+    <i class="fa-solid fa-heart"></i>
+    <span>Favorites</span>
+</a>
+</nav>
+
+</header>  
+<section class="hero">  <div class="hero-content">  
+
+    <div class="hero-text">  
+
+        <div class="hero-location">  
+            <img src="images/atmakur-logo.png" alt="ఆత్మకూరు">  
+        </div>  
+
+        <h1>  
+         Find Your <span>Perfect Property</span>  
+        </h1>  
+
+        <p>  
+            Premium Plots, Houses & Agricultural Land  
+            in and around Atmakur.  
+        </p>  
+
+        <div class="hero-buttons">  
+
+            <a href="#properties" class="btn-primary">  
+                Explore Properties  
+            </a>  
+
+            <a href="#contact" class="btn-secondary">  
+                Contact Us  
+            </a>  
+
+        </div>  
+
+    </div>  
+
+</div>
+
+</section>  
+<section class="properties" id="properties">
+
+<div class="search-section">
+
+<h2>Available Properties</h2>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search by area, road or property ID...">
+
+<button onclick="searchProperties()">
+Search
+</button>
+
+</div>
+
+</div>
+
+<!-- FILTER BUTTONS START -->
+
+<div class="filter-buttons">
+
+    <button class="filter-btn active" data-filter="ALL">
+        All
+    </button>
+
+    <button class="filter-btn" data-filter="AVAILABLE">
+        Available
+    </button>
+
+    <button class="filter-btn" data-filter="SOLD">
+        Sold
+    </button>
+
+    <button class="filter-open-btn" id="openFilter">
+    ⚙ Filter
+</button>
+
+</div>
+
+<!-- FILTER BUTTONS END -->
+
+    <!-- FILTER POPUP START -->
+
+<div class="filter-overlay" id="filterOverlay">
+
+    <div class="filter-box">
+
+        <div class="filter-header">
+            <h2>Filter Properties</h2>
+
+            <button class="filter-close" id="closeFilter">
+                ×
+            </button>
+        </div>
+
+        <label>Area / Road</label>
+
+<input
+    type="text"
+    id="filterArea"
+    placeholder="Enter area or road..."
+>
+
+
+<label>Below Price</label>
+
+<input
+    type="number"
+    id="belowPrice"
+    placeholder="Example: 500000"
+>
+
+
+<label>Land Size (Cents)</label>
+
+<input
+    type="number"
+    id="filterCents"
+    placeholder="Example: 5"
+>
+
+
+<label>Facing</label>
+
+<select id="filterFacing">
+
+    <option value="">Any Facing</option>
+
+    <option value="East">East</option>
+
+    <option value="West">West</option>
+
+    <option value="North">North</option>
+
+    <option value="South">South</option>
+
+</select>
+
+
+        <div class="filter-actions">
+
+            <button id="clearFilter" class="clear-filter">
+                Clear
+            </button>
+
+            <button id="applyFilter" class="apply-filter">
+                Apply Filter
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FILTER POPUP END -->
+
+<div class="section-title">
+
+</div>
+
+<div class="property-grid" id="propertyGrid">
+
+</div>
+
+<div class="pagination" id="pagination"></div>
+
+</section>
+<section class="stats">  <div class="stat-box">  
+<h2 id="propertyCount">0</h2>  
+<p>Properties Listed</p>  
+</div>  <div class="stat-box">  
+<h2>10+</h2>  
+<p>Happy Clients</p>  
+</div>  <div class="stat-box">  
+<h2>2+</h2>  
+<p>Locations Covered</p>  
+</div>  <div class="stat-box">  
+<h2>100%</h2>  
+<p>Trusted Service</p>  
+</div> 
+</section>  
+
+    
+<section class="featured-property">
+
+<h2>⭐ Featured Property</h2>
+
+<div id="featuredProperty"></div>
+
+</section>
+<section class="why-us">  <h2>Why Choose Atmakur Real Estate?</h2>  
+
+<div class="why-grid">  
+
+    <div class="why-card">  
+        <h3>✔ Verified Properties</h3>  
+        <p>Every property is carefully verified before listing.</p>  
+    </div>  
+
+<div class="why-card">  
+    <h3>📍 Prime Locations</h3>  
+    <p>Properties in the best areas of Atmakur and nearby locations.</p>  
+</div>  
+
+<div class="why-card">  
+    <h3>🤝 Trusted Service</h3>  
+    <p>Transparent dealings with honest guidance throughout.</p>  
+</div>  
+
+<div class="why-card">  
+    <h3>💬 Quick Support</h3>  
+    <p>Fast responses through WhatsApp and phone support.</p>  
+</div>
+
+</div>  </section>  
+<section class="testimonials">  <h2>What Our Clients Say</h2>  
+
+<div class="testimonial-grid">  
+
+<div class="testimonial-card">  
+    <p>"Excellent service! The property buying process was smooth and transparent."</p>  
+    <h4>— Abdul Rahman</h4>  
+</div>  
+
+<div class="testimonial-card">  
+    <p>"Highly recommended. Professional guidance and genuine property listings."</p>  
+    <h4>— Shaik Ahmed</h4>  
+</div>  
+
+<div class="testimonial-card">  
+        <p>"Found the perfect plot at the right price. Thank you Atmakur Real Estate!"</p>  
+        <h4>— Noor Mohammed</h4>  
+    </div>  
+
+</div>
+
+</section>  
+<section id="about" class="about">  <h2>About Atmakur Real Estate</h2>  
+
+<p>  
+    Atmakur Real Estate is dedicated to helping buyers and sellers find the right properties with honesty, transparency, and trusted service. We focus on verified plots, prime locations, and a smooth property buying experience across Atmakur and nearby areas.  
+</p>
+
+</section>  <section class="contact" id="contact">  <h2>Contact Us</h2>  <p>📞 Phone: +91 8977201211</p>  <p>💬 WhatsApp: +91 8977201211</p>  <p>📍 Atmakur, Andhra Pradesh</p>  
+<iframe  
+src="https://www.google.com/maps?q=Atmakur,Andhra%20Pradesh&output=embed"  
+width="100%"  
+height="350"  
+style="border:0;border-radius:15px;"  
+allowfullscreen=""  
+loading="lazy">  
+</iframe>  <p>📧 Email: youremail@gmail.com</p>  <a href="tel:+918977201211" class="call-btn">Call Now</a>
+
+<a href="https://wa.me/918977201211" class="whatsapp-btn">Chat on WhatsApp</a>
+
+  </section>  
+<hr class="section-divider">  
+    
+    <footer>  
+        
+        <h2>Atmakur Real Estate</h2> 
+        <p>Your Trusted Partner for Buying & Selling Properties</p> 
+        <p>📍 Atmakur, Andhra Pradesh</p>  
+        <p>📞 +91 8977201211</p>  
+        <p>© 2026 Atmakur Real Estate. All Rights Reserved.</p>  
+        <p>
+    <a href="privacy-policy.html">Privacy Policy</a>
+        </p>
+        <p>
+    <a href="terms.html">Terms & Conditions</a>
+        </p>
+        <p>
+    <i class="fa-solid fa-code"></i>👨‍💻 Designed &amp; Developed by<span class="developer-name"> OMG_X_NOOR</span></p>
+</footer>  
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+<script src="properties.js"></script>
+<script src="script.js"></script>  
+
+</body>  
+    
+</html>
