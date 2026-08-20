@@ -1575,6 +1575,15 @@ header{
 
 }
 
+.call-btn:hover,
+.call-btn:focus,
+.call-btn:active{
+    background:#FFD700 !important;
+    color:#050505 !important;
+    -webkit-text-fill-color:#050505 !important;
+    text-decoration:none !important;
+}
+
 /* ---------- WhatsApp Button ---------- */
 
 .contact .whatsapp-btn{
@@ -3294,6 +3303,30 @@ body{
 }
 
 
+  .call-btn:active {
+    background: #FFD700 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+
+  /* =========================================================
+   CALL BUTTON TAP / HOVER COLOR FIX
+========================================================= */
+
+.call-btn:hover,
+.call-btn:focus,
+.call-btn:active {
+
+    background:#FFD700 !important;
+
+    color:#000000 !important;
+
+    -webkit-text-fill-color:#000000 !important;
+
+    text-decoration:none !important;
+
+}
 /* =========================================================
    WHATSAPP BUTTON
 ========================================================= */
@@ -3604,5 +3637,3 @@ footer p:last-child{
 }
   
 }  /* ===== END MOBILE VERSION ===== */
-
-
