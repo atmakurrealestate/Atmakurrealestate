@@ -62,13 +62,106 @@ if (document.getElementById("slide")) {
 }
 
 function openFullscreen() {
+
     document.getElementById("lightbox").style.display = "flex";
+
     document.getElementById("lightboxImg").src =
-        document.getElementById("slide").src;
+        images[current];
+
 }
 
+
+function nextFullscreenImage() {
+
+    if (images.length === 0) return;
+
+    current = (current + 1) % images.length;
+
+    document.getElementById("lightboxImg").src =
+        images[current];
+
+}
+
+
+function previousFullscreenImage() {
+
+    if (images.length === 0) return;
+
+    current = (current - 1 + images.length) % images.length;
+
+    document.getElementById("lightboxImg").src =
+        images[current];
+
+}
+
+
 function closeFullscreen() {
+
     document.getElementById("lightbox").style.display = "none";
+
+}
+
+
+/* ==========================================
+   FULLSCREEN IMAGE SWIPE
+========================================== */
+
+let touchStartX = 0;
+
+const lightbox = document.getElementById("lightbox");
+
+if (lightbox) {
+
+    lightbox.addEventListener("touchstart", function(event) {
+
+        touchStartX = event.changedTouches[0].screenX;
+
+    }, { passive: true });
+
+
+    lightbox.addEventListener("touchend", function(event) {
+
+        const touchEndX = event.changedTouches[0].screenX;
+
+        const swipeDistance = touchEndX - touchStartX;
+
+
+        /* SWIPE LEFT → NEXT IMAGE */
+
+        if (swipeDistance < -20) {
+
+            nextFullscreenImage();
+
+        }
+
+
+        /* SWIPE RIGHT → PREVIOUS IMAGE */
+
+        else if (swipeDistance > 20) {
+
+            previousFullscreenImage();
+
+        }
+
+    }, { passive: true });
+
+}
+
+/* =========================================================
+   PREVENT LONG-PRESS MENU ON FULLSCREEN IMAGE
+========================================================= */
+
+const fullscreenImage =
+    document.getElementById("lightboxImg");
+
+if (fullscreenImage) {
+
+    fullscreenImage.addEventListener("contextmenu", function(event) {
+
+        event.preventDefault();
+
+    });
+
 }
 
 const pageUrl = window.location.href;
@@ -182,11 +275,33 @@ if (propertyId && typeof properties !== "undefined") {
         document.getElementById("property-id").textContent =
             "ID : " + property.id;
 
-        document.getElementById("property-map").src = property.map;
+        document.getElementById("property-map").src =
+            property.map;
+
+        const mapButton = document.getElementById("property-map-btn");
+
+if (mapButton && property.map) {
+
+    const match = property.map.match(
+        /!2d(-?\d+(?:\.\d+)?)!3d(-?\d+(?:\.\d+)?)/
+    );
+
+    if (match) {
+
+        const longitude = match[1];
+        const latitude = match[2];
+
+        mapButton.href =
+            `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+
+    }
+
+}
 
         document.getElementById("property-price").textContent =
             property.price;
 
+        /* ENGLISH */
         document.getElementById("property-area").textContent =
             property.area;
 
@@ -196,10 +311,27 @@ if (propertyId && typeof properties !== "undefined") {
         document.getElementById("property-road").textContent =
             property.road;
 
+        document.getElementById("property-facing").textContent =
+    property.facing;
+
+        /* TELUGU */
+        document.getElementById("property-area-telugu").textContent =
+            property.areaTelugu;
+
+        document.getElementById("property-land-telugu").textContent =
+            property.landTelugu;
+
+        document.getElementById("property-road-telugu").textContent =
+            property.roadTelugu;
+
+        document.getElementById("property-facing-telugu").textContent =
+    property.facingTelugu;
+
+        /* DESCRIPTION */
         document.getElementById("property-description").textContent =
             property.description;
 
-        if(document.getElementById("slide")){
+        if (document.getElementById("slide")) {
             document.getElementById("slide").src =
                 property.images[0];
         }
@@ -207,7 +339,6 @@ if (propertyId && typeof properties !== "undefined") {
     }
 
 }
-
 /* ==========================================
    Related Properties
 ========================================== */
@@ -449,6 +580,12 @@ if(currentFilter !== "ALL"){
 ${property.status}
 </span>
 
+</div>
+
+<div class="card-content">
+
+<h3><span>ID:${property.id}</span></h3>
+
 <button
 class="favorite-btn"
 data-id="${property.id}"
@@ -458,11 +595,6 @@ onclick="toggleFavorite('${property.id}')">
 
 </button>
 
-</div>
-
-<div class="card-content">
-
-<h3><span>ID:${property.id}</span></h3>
 
 <p>📍 ${property.area}</p>
 
@@ -635,21 +767,31 @@ setupPagination();
    FILTER BUTTONS
 ========================================== */
 
-document.querySelectorAll(".filter-btn").forEach(button=>{
+document.querySelectorAll(".filter-btn").forEach(button => {
 
-    button.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
+        /* REMOVE ALL ADVANCED FILTERS */
+        document.getElementById("filterArea").value = "";
+        document.getElementById("belowPrice").value = "";
+        document.getElementById("filterCents").value = "";
+        document.getElementById("filterFacing").value = "";
+
+        /* REMOVE SEARCH FILTER TOO */
+        document.getElementById("searchInput").value = "";
+
+        /* ACTIVE BUTTON */
         document.querySelectorAll(".filter-btn")
-        .forEach(btn=>btn.classList.remove("active"));
+            .forEach(btn => btn.classList.remove("active"));
 
         button.classList.add("active");
 
+        /* APPLY ONLY ALL / AVAILABLE / SOLD */
         currentFilter = button.dataset.filter;
 
         currentPage = 1;
 
         displayProperties(currentPage);
-
         setupPagination();
 
     });
@@ -919,6 +1061,13 @@ if(cents > 0){
 ${property.status}
 </span>
 
+
+</div>
+
+<div class="card-content">
+
+<h3><span>ID:${property.id}</span></h3>
+
 <button
 class="favorite-btn"
 data-id="${property.id}"
@@ -927,12 +1076,6 @@ onclick="toggleFavorite('${property.id}')">
 🤍
 
 </button>
-
-</div>
-
-<div class="card-content">
-
-<h3><span>ID:${property.id}</span></h3>
 
 <p>📍 ${property.area}</p>
 
